@@ -25,9 +25,9 @@ Projeto da disciplina **Raciocínio Lógico e Algorítmico** (Ciência da Comput
 
 | Integrante | Responsabilidade |
 |---|---|
-| _Nome 1_ | Pessoa 1: Dados do jogo + Menus e entrada |
-| _Nome 2_ | Pessoa 2: Regras do combate |
-| _Nome 3_ | Pessoa 3: Fluxo da batalha e do jogo |
+| _Benito_ | Pessoa 1: Dados do jogo + Menus e entrada |
+| _Gabriel_ | Pessoa 2: Regras do combate |
+| _Arthur_ | Pessoa 3: Fluxo da batalha e do jogo |
 
 ## Como rodar
 
