@@ -36,3 +36,14 @@ function escolherAcao(i) {
     return golpe - 1
 
 }
+
+// i = heroi, fase = vilão (0 = Arbok, 1 = Mewtwo)
+// vidaHeroi e vidaVilao = vida ATUAL, que veio do combate
+function mostrarStatus(i, fase, vidaHeroi, vidaVilao) {
+
+    console.log (`${herois[i]}: ${vidaHeroi} / ${vidasMaxH[i]}`)
+    console.log (`${viloes[fase]}: ${vidaVilao} / ${vidasMaxV[fase]}`)
+
+}
+
+// mostrarStatus(0, 0, 106, 60) -> teste de saída
