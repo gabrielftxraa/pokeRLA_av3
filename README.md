@@ -25,9 +25,9 @@ Projeto da disciplina **Raciocínio Lógico e Algorítmico** (Ciência da Comput
 
 | Integrante | Responsabilidade |
 |---|---|
-| _Benito_ | Pessoa 1: Dados do jogo + Menus e entrada |
-| _Gabriel_ | Pessoa 2: Regras do combate |
-| _Arthur_ | Pessoa 3: Fluxo da batalha e do jogo |
+| _Nome 1_ | Pessoa 1: Dados do jogo + Menus e entrada |
+| _Nome 2_ | Pessoa 2: Regras do combate |
+| _Nome 3_ | Pessoa 3: Fluxo da batalha e do jogo |
 
 ## Como rodar
 
@@ -35,8 +35,31 @@ Projeto da disciplina **Raciocínio Lógico e Algorítmico** (Ciência da Comput
 2. Cole o conteúdo de `main.js` no editor.
 3. Clique em **Run** e responda às perguntas no painel *Output*.
 
+## Pontos de atenção (decisões já tomadas)
+
+Antes de mexer no código de outra pessoa, confira aqui. Dúvidas sobre estes pontos: falar com o **Benito** (Etapa A).
+
+**Sobre os dados (`dados.js`, Etapa A, concluída):**
+
+- Os dados usam **arrays paralelos**: a posição `i` é o mesmo Pokémon em `herois`, `tiposH`, `vidasMaxH`, `ataquesH`, `danosH` e `acertosH`. O mesmo vale para os inimigos (`viloes`, `tiposV`...).
+- Ataques, danos e acertos são **arrays aninhados**: `ataquesH[i][j]` é o ataque `j` do Pokémon `i`. Ex.: `ataquesH[1][2]` é o Lança-Chamas do Charmander e `danosH[1][2]` é 30.
+- O Arbok tem **2** ataques e o Mewtwo tem **3**. Sempre use `ataquesV[i].length`, **nunca** um número fixo.
+- A precisão está em **decimal** (`0.95` = 95%). Para exibir, multiplique por 100 só na hora de mostrar. Para o teste de acerto (Etapa C), compare com o sorteio de `Math.random()`, que também vai de 0 a 1.
+- `vidasMaxH` e `vidasMaxV` **nunca devem ser alterados** durante o jogo. A vida que diminui na batalha fica numa variável separada (Etapa D). Isso evita os bugs do NPC e do "Jogar de novo".
+- O `dados.js` ainda tem **dois `for` de teste** no final, que imprimem todos os ataques. Na integração (Etapa F), eles devem ser **comentados** ou virar uma função usada na tela de escolha.
+
+**Sobre o Git:**
+
+- Cada um trabalha no **seu próprio arquivo** (ex.: `dados.js`, `combate.js`, `fluxo.js`). A junção num único `main.js` só acontece na Etapa F.
+- Sempre faça **pull antes do push**.
+- Mensagens de commit curtas, dizendo o que entrou. Ex.: `Adiciona dados dos Pokémon e inimigos (Etapa A)`.
+- Se o VS Code mostrar a barra azul de **Restricted Mode** e o Git não funcionar, clique em **Manage** e marque a pasta como confiável.
+
+---
+
 ## Sumário
 
+0. [Pontos de atenção](#pontos-de-atenção-decisões-já-tomadas)
 1. [Visão geral do jogo](#1-visão-geral-do-jogo)
 2. [Onde cada conceito da disciplina aparece](#2-onde-cada-conceito-da-disciplina-aparece)
 3. [Antes de começar](#3-antes-de-começar-todos-juntos-30-min)
@@ -56,10 +79,12 @@ Projeto da disciplina **Raciocínio Lógico e Algorítmico** (Ciência da Comput
 
 1. Tela de abertura com o nome do jogo.
 2. Escolha do personagem (3 opções).
-3. **Batalha 1:** contra o vilão.
-4. Se perder, fim de jogo. Se vencer, recupera um pouco de vida e segue.
-5. **Batalha 2:** contra o boss.
-6. Tela final de vitória ou derrota, com a pergunta "Jogar de novo?".
+3. **Encontro com o NPC:** tratar bem ou mal muda a vida do vilão.
+4. **Batalha 1:** contra o vilão.
+5. Se perder, fim de jogo. Se vencer, recupera um pouco de vida e segue.
+6. **Novo encontro com o NPC:** agora a escolha afeta o boss.
+7. **Batalha 2:** contra o boss.
+8. Tela final de vitória ou derrota, com a pergunta "Jogar de novo?".
 
 **Tamanho certo para a AV3:** 3 personagens, 2 inimigos, 3 ataques por personagem e 1 item de cura. Isso já usa todos os conceitos sem virar um projeto gigante.
 
@@ -70,7 +95,7 @@ O professor vai procurar os conceitos, então deixem cada um **visível** e com 
 | Conceito | Onde usar no jogo |
 |---|---|
 | `if / else` | vida chegou a 0? acertou ou errou o ataque? tem vantagem de tipo? |
-| `switch` | menu de escolha do personagem e menu de ação na batalha (1 = atacar, 2 = curar...) |
+| `switch` | menu de escolha do personagem, menu de ação na batalha (1 = atacar, 2 = curar...) e diálogo com o NPC |
 | `for` | exibir a lista de personagens e a lista de ataques a partir dos arrays |
 | `while` | o laço da batalha (**enquanto** os dois estiverem vivos) e a validação de entrada |
 | Arrays | lista de personagens, lista de ataques de cada um, lista de inimigos |
@@ -112,7 +137,7 @@ Cada personagem com um "estilo" diferente deixa a escolha da etapa 2 interessant
 | **Pessoa 1** | A (Dados) + B (Menus e entrada) | os dados são rápidos; os menus têm mais detalhes |
 | **Pessoa 2** | C (Regras do combate) | funções de cálculo, sorteio e condições |
 | **Pessoa 3** | D (Fluxo da batalha e do jogo) | a parte que liga tudo; é a mais "laço" do projeto |
-| **Todos** | E (Integração e testes) | |
+| **Todos** | E (NPC, dividido entre os 3) e F (Integração e testes) | |
 
 Cada etapa diz **os conceitos aplicados**, **o que entregar**, **perguntas para guiar** e **armadilhas** (as mesmas que apareceram nos nossos treinos).
 
@@ -183,7 +208,41 @@ Cada etapa diz **os conceitos aplicados**, **o que entregar**, **perguntas para 
 
 **Armadilha:** a mensagem "Você venceu!" ficar dentro do laço ou fora de qualquer `if` (lembrem da lanchonete e do caixa eletrônico).
 
-### Etapa E: Integração e testes (todos)
+### Etapa E: O NPC (dividida entre as 3 pessoas)
+
+Antes de cada batalha, o jogador encontra um NPC (ex.: uma treinadora pedindo ajuda para achar seu Pokémon perdido). A forma como o jogador o trata muda a vida do próximo inimigo:
+
+| Como tratou o NPC | Vilão | Boss |
+|---|---|---|
+| Bem | vida normal | vida normal |
+| Mal | vida aumentada (ex.: +30%) | vida aumentada (ex.: +30%) |
+
+**Conceitos aplicados:** **`switch`** (as opções de diálogo), **`if / else`** (bem ou mal → vida normal ou aumentada), **função que devolve `true/false`** (o resultado do encontro), **função com parâmetro** (o mesmo NPC serve para as duas fases) e **`while` de validação** (resposta inválida no diálogo).
+
+**Quem faz o quê:**
+
+| Pessoa | Parte do NPC |
+|---|---|
+| Pessoa 1 (Menus) | `encontrarNPC`: mostra a fala, as opções e devolve se o jogador tratou bem |
+| Pessoa 2 (Combate) | `calcularVidaInimigo`: recebe a vida base e o resultado do encontro e devolve a vida da batalha |
+| Pessoa 3 (Fluxo) | chama o NPC **antes** de cada batalha e passa a vida calculada para `batalhar` |
+
+**Perguntas-guia:**
+
+- Quantas opções de diálogo vão existir? Com 3 opções (ex.: ajudar, ignorar, ser grosseiro), quais contam como "bem" e quais como "mal"? Esse mapeamento é o `switch`.
+- O NPC aparece **uma vez** (e a escolha vale para vilão e boss) ou **antes de cada batalha**? (Sugestão: antes de cada uma, reaproveitando a mesma função com um parâmetro que diz a fase. Assim o jogador pode "se redimir" antes do boss.)
+- "Mais vida" é somar um valor fixo (+30) ou multiplicar (× 1,3)? Multiplicar pode gerar número quebrado: como deixar inteiro? (Pesquisem `Math.round`.)
+- O jogador precisa **saber** o que aconteceu? Uma mensagem como "O vilão parece mais forte..." ajuda a entender a consequência.
+
+**Armadilhas:**
+
+- **Aplicar o bônus dentro do laço da batalha:** aí ele soma vida a cada turno. O ajuste acontece **uma vez, antes** de a batalha começar.
+- **Alterar o valor base do inimigo:** se a vida "original" do vilão for sobrescrita com a vida aumentada, no "Jogar de novo" ele já começa forte, mesmo que o jogador trate bem o NPC. Guardem a vida base intacta e calculem a vida da batalha numa variável separada (é a diferença entre vida máxima e vida atual da Etapa A).
+- **Resposta inválida no diálogo** (7, "abc") não pode contar como "bem" nem "mal": repete a pergunta.
+
+**Ideia extra (opcional):** quem trata bem o NPC ganha uma poção a mais. Isso usa um contador e deixa a escolha com prós e contras dos dois lados.
+
+### Etapa F: Integração e testes (todos)
 
 **Conceitos aplicados:** **teste de mesa** (rastrear uma batalha à mão para conferir os números), **casos extremos** (entrada inválida, vida exata em 0, perder logo na primeira batalha) e **depuração** (`console.log` temporário para ver o valor das variáveis).
 
@@ -202,6 +261,8 @@ Os nomes abaixo são sugestão. O importante é o grupo inteiro usar **os mesmos
 | `calcularDano` | o ataque (e os tipos, se usarem vantagem) | o dano (0 se errou) | C (Pessoa 2) |
 | `aplicarDano` | vida atual e dano | a nova vida (nunca negativa) | C (Pessoa 2) |
 | `mostrarStatus` | jogador e inimigo | nada (imprime as vidas) | B (Pessoa 1) |
+| `encontrarNPC` | a fase (1 = vilão, 2 = boss) | `true` se tratou bem, `false` se tratou mal | NPC (Pessoa 1) |
+| `calcularVidaInimigo` | vida base do inimigo e o resultado do NPC | a vida que o inimigo terá na batalha | NPC (Pessoa 2) |
 | `batalhar` | jogador e inimigo | `true` se o jogador venceu, `false` se perdeu | D (Pessoa 3) |
 | `jogar` | nada | nada (é o jogo inteiro) | D (Pessoa 3) |
 
@@ -221,6 +282,8 @@ Os nomes abaixo são sugestão. O importante é o grupo inteiro usar **os mesmos
 8. A cura acaba quando os usos chegam a 0?
 9. "Jogar de novo" recomeça com as vidas cheias?
 10. Todo `while` tem um jeito de terminar?
+11. Tratar mal o NPC aumenta a vida do inimigo **só uma vez** (não a cada turno)?
+12. Depois de "Jogar de novo" tratando bem o NPC, o inimigo volta à vida normal?
 
 ## 7. Extras (só se sobrar tempo)
 
