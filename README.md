@@ -25,9 +25,9 @@ Projeto da disciplina **Raciocínio Lógico e Algorítmico** (Ciência da Comput
 
 | Integrante | Responsabilidade |
 |---|---|
-| _Nome 1_ | Pessoa 1: Dados do jogo + Menus e entrada |
-| _Nome 2_ | Pessoa 2: Regras do combate |
-| _Nome 3_ | Pessoa 3: Fluxo da batalha e do jogo |
+| Benito | Pessoa 1: Dados do jogo + Menus e entrada |
+| Gabriel | Pessoa 2: Regras do combate |
+| Arthur | Pessoa 3: Fluxo da batalha e do jogo |
 
 ## Como rodar
 
@@ -37,7 +37,7 @@ Projeto da disciplina **Raciocínio Lógico e Algorítmico** (Ciência da Comput
 
 ## Pontos de atenção (decisões já tomadas)
 
-Antes de mexer no código de outra pessoa, confira aqui. Dúvidas sobre estes pontos: falar com o **Benito** (Etapa A).
+Antes de mexer no código de outra pessoa, confira aqui. Dúvidas sobre estes pontos: falar com o **Benito** (Etapas A e B).
 
 **Sobre os dados (`dados.js`, Etapa A, concluída):**
 
@@ -48,9 +48,20 @@ Antes de mexer no código de outra pessoa, confira aqui. Dúvidas sobre estes po
 - `vidasMaxH` e `vidasMaxV` **nunca devem ser alterados** durante o jogo. A vida que diminui na batalha fica numa variável separada (Etapa D). Isso evita os bugs do NPC e do "Jogar de novo".
 - O `dados.js` ainda tem **dois `for` de teste** no final, que imprimem todos os ataques. Na integração (Etapa F), eles devem ser **comentados** ou virar uma função usada na tela de escolha.
 
+**Sobre os menus (`menu.js`, Etapa B, concluída):**
+
+- `escolherPersonagem()` devolve o **índice** do herói (0, 1 ou 2), não o nome. Use em `herois[i]`, `vidasMaxH[i]`, `ataquesH[i]`...
+- `escolherAcao(i)` devolve de **0 até `ataquesH[i].length - 1`** quando é ataque e **`ataquesH[i].length`** quando é **Curar**. Ex.: com 3 ataques, 0/1/2 = ataque e 3 = Curar.
+- `mostrarStatus(i, fase, vidaHeroi, vidaVilao)` só imprime. `fase` é o índice do vilão (**0 = Arbok, 1 = Mewtwo**). As vidas **atuais** vêm do combate, que é quem guarda e atualiza essas variáveis.
+- **Padrão de fase em todo o projeto: 0 = vilão (Arbok), 1 = boss (Mewtwo)**, igual aos índices de `viloes`. Vale para `mostrarStatus`, `encontrarNPC` e qualquer outra função que receba a fase.
+- As chamadas de teste no final do `menu.js` estão **comentadas**. Para testar no Programiz, cole `dados.js` + `menu.js`.
+- O Node do VS Code **não tem `prompt()`**: testem sempre no Programiz.
+
 **Sobre o Git:**
 
 - Cada um trabalha no **seu próprio arquivo** (ex.: `dados.js`, `combate.js`, `fluxo.js`). A junção num único `main.js` só acontece na Etapa F.
+- Cada etapa nasce numa **branch própria criada a partir do `main` atualizado** (ex.: `dados`, `menu`, `combate`). Ao terminar: Pull Request para o `main`, merge e apaga a branch.
+- Nunca programe direto no `main`.
 - Sempre faça **pull antes do push**.
 - Mensagens de commit curtas, dizendo o que entrou. Ex.: `Adiciona dados dos Pokémon e inimigos (Etapa A)`.
 - Se o VS Code mostrar a barra azul de **Restricted Mode** e o Git não funcionar, clique em **Manage** e marque a pasta como confiável.
@@ -134,9 +145,9 @@ Cada personagem com um "estilo" diferente deixa a escolha da etapa 2 interessant
 
 | Pessoa | Etapas | Peso |
 |---|---|---|
-| **Pessoa 1** | A (Dados) + B (Menus e entrada) | os dados são rápidos; os menus têm mais detalhes |
-| **Pessoa 2** | C (Regras do combate) | funções de cálculo, sorteio e condições |
-| **Pessoa 3** | D (Fluxo da batalha e do jogo) | a parte que liga tudo; é a mais "laço" do projeto |
+| **Pessoa 1 (Benito)** | A (Dados) + B (Menus e entrada) | os dados são rápidos; os menus têm mais detalhes |
+| **Pessoa 2 (Gabriel)** | C (Regras do combate) | funções de cálculo, sorteio e condições |
+| **Pessoa 3 (Arthur)** | D (Fluxo da batalha e do jogo) | a parte que liga tudo; é a mais "laço" do projeto |
 | **Todos** | E (NPC, dividido entre os 3) e F (Integração e testes) | |
 
 Cada etapa diz **os conceitos aplicados**, **o que entregar**, **perguntas para guiar** e **armadilhas** (as mesmas que apareceram nos nossos treinos).
@@ -254,14 +265,14 @@ Os nomes abaixo são sugestão. O importante é o grupo inteiro usar **os mesmos
 
 | Função | Recebe | Devolve | Etapa |
 |---|---|---|---|
-| `mostrarAbertura` | nada | nada (só imprime) | B (Pessoa 1) |
-| `escolherPersonagem` | lista de personagens | o personagem (ou o índice) escolhido | B (Pessoa 1) |
-| `escolherAcao` | o personagem do jogador | o número da ação válida | B (Pessoa 1) |
+| `mostrarAbertura` | nada | nada (só imprime logo e regras) | B (Pessoa 1) ✅ |
+| `escolherPersonagem` | nada | o **índice** do herói (0, 1 ou 2) | B (Pessoa 1) ✅ |
+| `escolherAcao` | `i` (índice do herói) | 0 até `qtd-1` = ataque; `qtd` = Curar (`qtd = ataquesH[i].length`) | B (Pessoa 1) ✅ |
 | `sortearAtaque` | lista de ataques do inimigo | um ataque (ou índice) | C (Pessoa 2) |
 | `calcularDano` | o ataque (e os tipos, se usarem vantagem) | o dano (0 se errou) | C (Pessoa 2) |
 | `aplicarDano` | vida atual e dano | a nova vida (nunca negativa) | C (Pessoa 2) |
-| `mostrarStatus` | jogador e inimigo | nada (imprime as vidas) | B (Pessoa 1) |
-| `encontrarNPC` | a fase (1 = vilão, 2 = boss) | `true` se tratou bem, `false` se tratou mal | NPC (Pessoa 1) |
+| `mostrarStatus` | `i, fase, vidaHeroi, vidaVilao` | nada (imprime vida atual/máxima dos dois) | B (Pessoa 1) ✅ |
+| `encontrarNPC` | a fase (0 = vilão, 1 = boss) | `true` se tratou bem, `false` se tratou mal | NPC (Pessoa 1) |
 | `calcularVidaInimigo` | vida base do inimigo e o resultado do NPC | a vida que o inimigo terá na batalha | NPC (Pessoa 2) |
 | `batalhar` | jogador e inimigo | `true` se o jogador venceu, `false` se perdeu | D (Pessoa 3) |
 | `jogar` | nada | nada (é o jogo inteiro) | D (Pessoa 3) |
