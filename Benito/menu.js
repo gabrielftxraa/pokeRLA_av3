@@ -47,3 +47,30 @@ function mostrarStatus(i, fase, vidaHeroi, vidaVilao) {
 }
 
 // mostrarStatus(0, 0, 106, 60) -> teste de saída
+
+function mostrarAbertura() {
+    console.log(`
+                                  ,'\\
+    _.----.        ____         ,'  _\\   ___    ___     ____
+_,-'       '.     |    |  /'.   \\,-'    |   \\  /   |   |    \\  |'.
+\\      __    \\    '-.  | /   '.  ___    |    \\/    |   '-.   \\ |  |
+ \\.    \\ \\   |  __  |  |/    ,','_  '.  |          | __  |    \\|  |
+   \\    \\/   /,' _'.|      ,' / / / /   |          ,' _'.|     |  |
+    \\     ,-'/  /   \\    ,'   | \\/ / ,'.|         /  /   \\  |     |
+     \\    \\ |   \\_/  |   '-.  \\    ''  /|  |    ||   \\_/  | |\\    |
+      \\    \\ \\      /       '-.'.___,-' |  |\\  /| \\      /  | |   |
+       \\    \\ '.__,'|  |'-._    '|      |__| \\/ |  '.__,'|  | |   |
+        \\_.-'       |__|    '-._ |              '-.|     '-.| |   |
+                                ''                            '-._|
+
+
+                   BEM-VINDO AO UNIVERSO POKEMON!
+        Você tem apenas uma missão, derrotar esses caras maus!
+
+        Regra 1: Escolha seu Pokemon com sabedoria. 
+        Regra 2: Respeite quem faz parte da sua jornada.
+        Regra 3: A cura gasta uma ação, use-a com sabedoria.
+        Regra 4: Vença o primeiro vilão para enfrentar o chefão final!
+
+                                `)
+}
