@@ -64,17 +64,18 @@ if(decisão == "Sim"|| decisão == "sim"|| decisão == "SIM"){
 let heroi = escolherPersonagem()
 console.log(`Você escolheu: ${herois[heroi]}`)
 } else{
-  console.log("DEPOIS VOCÊ CONTINUA COM SUA JORNADA POKEMON!")
+    console.log("DEPOIS VOCÊ CONTINUA COM SUA JORNADA POKÉMON!")
 } 
 
 
 console.log(`
-    Benito (Vendendor de frutas da cidade): Fala novo mestre pokemon, tenho uma missão para vc, dizem por ai que tem um vilão em uma caverna expulsando os pokemons, quer ir atras desse desafio ? acha que consegue salvar os pokemons ?
+    Benito (Vendedor de frutas da cidade): Fala, novo mestre Pokémon! Tenho uma missão para você. Dizem por aí que tem um vilão em uma caverna expulsando os Pokémon. Quer ir atrás desse desafio? Acha que consegue salvar os Pokémon?
     `)
-console.log(`RESPONDA O BENITO: 
-   RESPOSTA 1 -> Sim, vou atras desse vilão para ajudar os pokemons!
-   RESPOSTA 2 -> Sim, vou atras desse vilão e provar que niguem é melhor que eu 
-   RESPOSTA 3 -> Não, não me sinto preparado para esse desafio 
+
+console.log(`RESPONDA AO BENITO:
+   RESPOSTA 1 -> Sim, vou atrás desse vilão para ajudar os Pokémon!
+   RESPOSTA 2 -> Sim, vou atrás desse vilão e provar que ninguém é melhor que eu.
+   RESPOSTA 3 -> Não, não me sinto preparado para esse desafio.
    `)
 
 let fase1 = Number(prompt("VAMOS ACEITAR ESSE DESAFIO ? "))
@@ -85,18 +86,23 @@ switch(fase1){
     case 1:
         dificuldade += 60
         desafio1 = true
-        console.log("Benito (Vendendor de frutas da cidade): Esse é o espirito da coisa, pois vamos para as instruções, você deve ir pela floresta, lá e perigoso tlvz encontre pokemons malignos, mas eu confio em você!");
+        console.log(`
+            Benito (Vendedor de frutas da cidade): Esse é o espírito da coisa! Pois vamos para as instruções: você deve ir pela floresta, lá é perigoso, talvez encontre Pokémon malignos, mas eu confio em você!
+            `)
+
     break;
     case 2:
         dificuldade += 80
         desafio1 = true
-        console.log("Benito (Vendendor de frutas da cidade): pois vamos para as instruções, você deve ir pela floresta, lá e perigoso tlvz encontre pokemons malignos, ai que vamos ver se vc é bom msm ");
+        console.log(`
+            Benito (Vendedor de frutas da cidade): Pois vamos para as instruções: você deve ir pela floresta, lá é perigoso, talvez encontre Pokémon malignos. Aí é que vamos ver se você é bom mesmo!
+        `)
     break;        
     case 3:
-        console.log("Benito (Vendendor de frutas da cidade ): Eu entendo até os grandes mestres pokemons tem medo não se preucupe!")
+        console.log("Benito (Vendedor de frutas da cidade): Eu entendo. Até os grandes mestres Pokémon têm medo. Não se preocupe!")
     break;
     default:
-        console.log("Opção invalida, renicie sua jornada")    
+        console.log("Opção inválida, reinicie sua jornada.") 
 }
 
 let passouDaFase1 = false // tem que mudar para passar pra proxima fase
@@ -107,30 +113,31 @@ if(desafio1 = true){// aqui o gabriel começa a trajetoria do primeiro vilão. a
 
 if(passouDaFase1 == true){
 console.log(`
-    Gabriel(forasteiro perdido na floresta): SOCORRO! consegue me ajudar? tem um pokemon muitoo forte naquela caverna ele ta machucando os pokemnos, consegue derrotar ele ?
+    Gabriel (Forasteiro perdido na floresta): SOCORRO! Consegue me ajudar? Tem um Pokémon muito forte naquela caverna. Ele está machucando os Pokémon. Consegue derrotá-lo?
     `)
-console.log(`RESPONDA O GABRIEL: 
-   RESPOSTA 1 -> Sim, eu vim derrotar esse vilão e ajudar os pokemons
-   RESPOSTA 2 -> Sim, vim derrotar esse pokemon e mostrar que sou o melhor 
-   RESPOSTA 3 -> Não, não me sinto preparado para esse desafio 
+
+console.log(`RESPONDA AO GABRIEL:
+   RESPOSTA 1 -> Sim, eu vim derrotar esse vilão e ajudar os Pokémon.
+   RESPOSTA 2 -> Sim, vim derrotar esse Pokémon e mostrar que sou o melhor.
+   RESPOSTA 3 -> Não, não me sinto preparado para esse desafio.
    `)
 let fase2 = Number(prompt("VAMOS ACEITAR ESSE DESAFIO ? "))
 let desafio2 = false
 switch(fase2){
     case 1:
         desafio2 = true
-        console.log("Gabriel(forasteiro perdido na floresta): Muito obrigado eu confio em você, entra lá e mostra pra ele quem manda!");
+       console.log("Gabriel (Forasteiro perdido na floresta): Muito obrigado! Eu confio em você. Entre lá e mostre para ele quem manda!")
     break;
     case 2:
         dificuldade += 20
         desafio2 = true
-        console.log("Gabriel(forasteiro perdido na floresta): Pois entre lá ai vamos ver se vc é bom msm ");
+       console.log("Gabriel (Forasteiro perdido na floresta): Pois entre lá, aí vamos ver se você é bom mesmo!")
     break;        
     case 3:
-        console.log("Gabriel(forasteiro perdido na floresta): Pois vamos fugir antes que ele venha atras de nós!")
+        console.log("Gabriel (Forasteiro perdido na floresta): Pois vamos fugir antes que ele venha atrás de nós!")
     break;
     default:
-        console.log("Opção invalida, renicie sua jornada")    
+        console.log("Opção inválida, reinicie sua jornada.")    
 }
 if(desafio2 = true){// aqui o gabriel começa a trajetoria do segundo vilão(boss). a batalha etc
 
