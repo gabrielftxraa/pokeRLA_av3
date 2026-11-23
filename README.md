@@ -32,7 +32,7 @@ Projeto da disciplina **Raciocínio Lógico e Algorítmico** (Ciência da Comput
 ## Como rodar
 
 1. Abra o [Programiz](https://www.programiz.com/javascript/online-compiler/).
-2. Cole o conteúdo de `main.js` no editor.
+2. Cole o conteúdo de `rla_pokemon_versao_final/main.js` no editor.
 3. Clique em **Run** e responda às perguntas no painel *Output*.
 
 ## Pontos de atenção (decisões já tomadas)
@@ -302,14 +302,3 @@ Os nomes abaixo são sugestão. O importante é o grupo inteiro usar **os mesmos
 - Crítico: 10% de chance de dano em dobro.
 - Histórico da batalha: um array que guarda o que aconteceu em cada turno, exibido no final com `for`.
 - Pontuação final: turnos usados, dano total causado.
-
-## 8. Sugestão de cronograma
-
-| Momento | O que fazer |
-|---|---|
-| Dia 1 | Seção 3 juntos: objetos ou arrays, contrato das funções, números e ordem do arquivo final |
-| Dias 2 a 4 | Pessoa 1 (A+B), Pessoa 2 (C) e Pessoa 3 (D) em paralelo; cada um testa sua parte sozinho no Programiz |
-| Dia 5 | Colar tudo num único `main.js`, rodar no Programiz e passar o checklist (seção 6) |
-| Dia 6 | Ajustar números jogando, comentar o código apontando os conceitos, ensaiar a apresentação |
-
-**Dica de apresentação:** cada integrante deve conseguir explicar **qualquer** parte, não só a sua. O professor costuma perguntar "por que esse `while` para?" ou "onde está o `switch`?".
